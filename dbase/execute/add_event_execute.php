@@ -15,7 +15,7 @@ if(isset($_POST['submit'])){
 
     $add_result = $con->query($add_event);
 
-    echo '<script>window.alert("Successfully added an Event!");window.location="../index.php";</script>';
+    echo '<script>window.alert("Successfully added an Event!");window.location="../add-event.php";</script>';
 
     // echo '<script>window.alert("Successfully Updated!");window.location="view-delegate.php?id='.$delegate_id.'";</script>';    
     

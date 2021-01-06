@@ -110,7 +110,7 @@ if(!empty($_GET['status'])){
                 <div class="col-md-12">
                     <div class="panel panel-danger">
                         <div class="panel-heading">
-                            <h3 class="panel-title">IMPORT ASSOCIATION</h3>
+                            <h3 class="panel-title">IMPORT DIRECTORY</h3>
                         </div>
                         <div class="panel-body">
                                 <div class="col-md-12 head">
@@ -119,26 +119,26 @@ if(!empty($_GET['status'])){
                                     </div>
                                 </div>                               
                                 <div class="col-md-12" id="importFrm" style="display: none;">
-                                    <form action="importDays_data.php" method="post" enctype="multipart/form-data">
+                                    <form action="import_directory.php" method="post" enctype="multipart/form-data">
                                         <div class="form-group row"> 
 
                                         <div class="col-md-6">
                                              <br>
-                                            <label for="association" class="text-primary">ASSOCIATION:</label>
-                                            <select name="association" class="form-control" id="exhibitor">
+                                            <label for="directory" class="text-primary">DIRECTORY NAME :</label>
+                                            <select name="directory" class="form-control" id="exhibitor">
                                                 <option selected>Choose...</option>
                                                 <?php 
-                                                $sql_assoc = "SELECT tbl_assoc_id, association FROM tbl_association"; 
+                                                $sql_assoc = "SELECT directory_id, directory FROM tbl_directory"; 
                                                 $result_assoc = mysqli_query($con, $sql_assoc);
                                                 while ($row_assoc = mysqli_fetch_array($result_assoc)){
                                                 #echo ...                                       
-                                                    echo '<option value="'. $row_assoc['tbl_assoc_id'].'">'. $row_assoc['association'].'</option>';
+                                                    echo '<option value="'. $row_assoc['directory_id'].'">'. $row_assoc['directory'].'</option>';
                                                 }
                                                 ?>
                                             </select>
                                         </div> 
 
-                                        <div class="col-md-6">
+                                        <!-- <div class="col-md-6">
                                              <br>
                                             <label for="industry" class="text-primary">INDUSTRIES:</label>
                                             <select name="industry" class="form-control" id="exhibitor">
@@ -152,7 +152,7 @@ if(!empty($_GET['status'])){
                                                 }
                                                 ?>
                                             </select>
-                                        </div>                                        
+                                        </div>  -->                                       
                                     </div>
                                     <input type="file"  class="btn btn-primary btn-lg btn-block" name="file" />
                                     <br>

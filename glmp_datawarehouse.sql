@@ -78,8 +78,7 @@ CREATE TABLE `tbl_contact` (
   `email` varchar(255) DEFAULT NULL,
   `company_id` int(10) DEFAULT NULL,
   `date_created` datetime NOT NULL DEFAULT current_timestamp(),
-  `date_updated` datetime NOT NULL DEFAULT current_timestamp(),
-  `tbl_company_company_id` int(10) NOT NULL
+  `date_updated` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -165,8 +164,8 @@ ALTER TABLE `tbl_company`
 -- Indexes for table `tbl_contact`
 --
 ALTER TABLE `tbl_contact`
-  ADD PRIMARY KEY (`contact_id`,`tbl_company_company_id`),
-  ADD KEY `fk_tbl_contact_tbl_company_idx` (`tbl_company_company_id`);
+  ADD PRIMARY KEY (`contact_id`);
+
 
 --
 -- Indexes for table `tbl_directory`
@@ -246,9 +245,7 @@ ALTER TABLE `users`
 --
 -- Constraints for table `tbl_contact`
 --
-ALTER TABLE `tbl_contact`
-  ADD CONSTRAINT `fk_tbl_contact_tbl_company` FOREIGN KEY (`tbl_company_company_id`) REFERENCES `tbl_company` (`company_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

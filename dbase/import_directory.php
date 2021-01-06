@@ -4,10 +4,8 @@ include_once 'parts/dbConfig.php';
 
 if(isset($_POST['importSubmit'])){
 
-    // $days = $_POST['days'];
-    // $exhibitor = $_POST['exhibitor'];
-    $assoc_id = $_POST['association'];
-    $ind_id = $_POST['industry'];
+
+    $directory = $_POST['directory'];
     
     // Allowed mime types
     $csvMimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain');
@@ -65,25 +63,25 @@ if(isset($_POST['importSubmit'])){
                     }
 
                     # New  Query to Insert the tbl_company_profile
-                    $qrypro = "SELECT assoc_id, ind_id FROM tbl_company WHERE assoc_id ='$assoc_id' OR ind_id='$ind_id' AND company_id='$get_comp_id'";
+                    $qrypro = "SELECT directory_id FROM tbl_company WHERE directory_id = $directory AND company_id='$get_comp_id'";
                     $qryproResult = $db->query($qrypro);
                     if ($qryproResult->num_rows > 0) {
 
                         //update tbl_company_profile
-                        $db->query("UPDATE tbl_company_profile SET assoc_id='$assoc_id' ind_id='$ind_id' WHERE company_id='$get_comp_id' ");
+                        $db->query("UPDATE tbl_company_profile SET directory_id=$directory WHERE company_id='$get_comp_id' ");
                         
 
                     }else{
 
                         // Insert tbl_company_profile 
-                        $db->query("INSERT INTO tbl_company_profile (company_id, assoc_id, ind_id, date_created) VALUES ('$get_comp_id','$assoc_id', '$ind_id', NOW())");
+                        $db->query("INSERT INTO tbl_company_profile (company_id, directory_id, date_created) VALUES ('$get_comp_id','$directory', NOW())");
 
                     }
                     # End  Query to Insert the tbl_company_profile
 
                 } else {
                     // Insert company data in the database
-                    $insert_company = "INSERT INTO tbl_company (company_name, address, city, country, telephone, email , product_profile, main_line_of_business, website, assoc_id, ind_id, date_created) VALUES ('$company', '$address', '$city', '$country', '$tel', '$email','$prod_profile', '$line_Bus', '$website', '$assoc_id', '$ind_id', NOW())" ;
+                    $insert_company = "INSERT INTO tbl_company (company_name, address, city, country, telephone, email , product_profile, main_line_of_business, website, directory_id, date_created) VALUES ('$company', '$address', '$city', '$country', '$tel', '$email','$prod_profile', '$line_Bus', '$website', '$directory' , NOW())" ;
 
                     if ($db->query($insert_company) === TRUE) {
                         $comp_id = $db->insert_id;
@@ -92,7 +90,7 @@ if(isset($_POST['importSubmit'])){
                         $db->query("INSERT INTO tbl_contact (company_id, salutation, fname, lname, designation, address, city, country, mobile, email, date_created) VALUES ('$comp_id', '$salutation', '$fname', '$lname', '$designation', '$address', '$city', '$country', '$mobile', '$email', NOW())");
 
                         # INSERT THE VALUE TO tbl_company_profile
-                        $db->query("INSERT INTO tbl_company_profile(company_id, assoc_id, ind_id, date_created) VALUES ('$comp_id', '$assoc_id', '$ind_id', NOW())");
+                        $db->query("INSERT INTO tbl_company_profile(company_id, directory_id, date_created) VALUES ('$comp_id','$directory',  NOW())");
                         # END THE VALUE TO tbl_company_profile
                     }
                 }
@@ -118,55 +116,3 @@ if(isset($_POST['importSubmit'])){
 
 // Redirect to the listing page
 header("Location: index.php".$qstring);
-
-                // // Check whether member already exists in the database with the same email
-                // $prevQuery = "SELECT id FROM members WHERE email = '".$line[1]."'";
-                // $prevResult = $db->query($prevQuery);
-                
-                // if($prevResult->num_rows > 0){
-                //     // Update member data in the database
-                //     $db->query("UPDATE members SET name = '".$name."', phone = '".$phone."', status = '".$status."', modified = NOW() WHERE email = '".$email."'");
-                // }else{
-                //     // Insert member data in the database
-                //     $db->query("INSERT INTO members (name, email, phone, created, modified, status) VALUES ('".$name."', '".$email."', '".$phone."', NOW(), NOW(), '".$status."')");
-                // }
-
-                    // Insert member data in the database
-                    // $db->query("INSERT INTO tbl_day (exhibitor_id, token_id, email, no_of_visit, day, date_created) VALUES ('".$exhibitor."', '".$id."', '".$email."', '".$visit."', '".$days."', NOW())");
-                // // Check whether member already exists in the database with the same email
-                // $prevQuery = "SELECT company_name FROM tbl_company WHERE company_name = '$company_name'";
-                // $prevResult = $db->query($prevQuery);
-                
-                // if($prevResult->num_rows > 0){
-                //     // Update member data in the database
-                //     $db->query("UPDATE tbl_company AS b INNER JOIN tbl_contact AS c ON c.company_id=b.company_id SET 
-                //         b.company_name = '$company_name', 
-                //         b.address = '$address', 
-                //         b.city = '$city', 
-                //         b.country ='$country', 
-                //         b.telephone = '$tel', 
-                //         b.email='$email', 
-                //         b.website='$website',                      
-                //         b.date_created = NOW(),
-                //         c.salutation ='$salutation',
-                //         c.fname = '$fname',
-                //         c.lname = '$lname',
-                //         c.address = '$address',
-                //         c.city = '$city',
-                //         c.country = 'country',
-                //         c.mobile = '$mobile',
-                //         c.email= '$email',
-                //         c.date_updated=NOW()
-                //         WHERE b.company_name = '$company_name' ");
-
-                // }else{
-                //     // Insert member data in the database
-                //     $db->query("INSERT INTO tbl_company (company_name, address, city, country, telephone, email, website, date_created) VALUES ('$company_name', '$address', '$city', '$country', '$tel', '$email', '$website',NOW())");
-
-                //     $last_insert_id=mysqli_insert_id($db);
-
-
-                //     $db->query("INSERT INTO tbl_contact (salutation, fname, lname, designation, address, city, country, mobile, email, company_id,date_created)
-                //         VALUES ('$salutation', '$fname', '$lname', '$designation', '$address', '$city', '$country', '$mobile', '$email', '$last_insert_id', NOW())");
-
-                // }

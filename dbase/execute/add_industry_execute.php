@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
 
     $add_result = $con->query($add_industry);
 
-    echo '<script>window.alert("Successfully added an industry!");window.location="../index.php";</script>';
+    echo '<script>window.alert("Successfully added an industry!");window.location="../add-industry.php";</script>';
 
     // echo '<script>window.alert("Successfully Updated!");window.location="view-delegate.php?id='.$delegate_id.'";</script>';    
     
