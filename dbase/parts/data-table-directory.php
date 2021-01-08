@@ -1,7 +1,7 @@
 <?php 
 include 'connect.php';
 
-$directory_query  = "SELECT directory_id,directory,category, DATE_FORMAT(date_created, '%b %d, %Y') AS DATECREATED FROM tbl_directory";
+$directory_query  = "SELECT d.directory_id, d.directory, c.category_name, DATE_FORMAT(d.date_created, '%b %d, %Y') AS DATECREATED FROM tbl_directory AS d INNER JOIN tbl_category AS c ON d.cat_id=c.cat_id ";
 $directory_query_result = $con->query($directory_query);
 
 ?>        
@@ -45,7 +45,7 @@ $directory_query_result = $con->query($directory_query);
                                                 # code...
                                                 $id = $directory_row['directory_id'];
                                                 $dir_name = $directory_row['directory'];
-                                                $cat_name = $directory_row['category'];
+                                                $cat_name = $directory_row['category_name'];
                                                 $date_created =$directory_row['DATECREATED'];
 
 

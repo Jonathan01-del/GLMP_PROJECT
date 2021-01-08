@@ -9,10 +9,10 @@
                         <li>
                             <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-event icon-wrap"></span> <span class="mini-click-non">MODULES</a>
                             <ul class="submenu-angle text-uppercase" aria-expanded="false">
-                                <li><a title="All Paid" href="add-association.php"><i class="fa fa-dashcube"></i>&nbsp;<span class="mini-sub-pro">ASSOCIATION</span></a></li>
-                                <li><a title="All Paid" href="add-event.php"><i class="fa fa-dashcube"></i>&nbsp;<span class="mini-sub-pro">EVENT / SHOWS</span></a></li> 
-                                <li><a title="All Paid" href="add-directory.php"><i class="fa fa-dashcube"></i>&nbsp;<span class="mini-sub-pro">DIRECTORY</span></a></li>
-                                <li><a title="All Paid" href="add-industry.php"><i class="fa fa-dashcube"></i>&nbsp;<span class="mini-sub-pro">INDUSTRY</span></a></li>
+                                <li><a title="Create Association List" href="add-association.php"><i class="fa fa-dashcube"></i>&nbsp;<span class="mini-sub-pro">ASSOCIATION</span></a></li>
+                                <li><a title="Create Event List" href="add-event.php"><i class="fa fa-dashcube"></i>&nbsp;<span class="mini-sub-pro">EVENT / SHOWS</span></a></li> 
+                                <li><a title="Create Directory List" href="add-directory.php"><i class="fa fa-dashcube"></i>&nbsp;<span class="mini-sub-pro">DIRECTORY</span></a></li>
+                                <li><a title="Create Industry List" href="add-industry.php"><i class="fa fa-dashcube"></i>&nbsp;<span class="mini-sub-pro">INDUSTRY</span></a></li>
                             </ul>
                         </li>
 <!------------------------------------------- End of Module Sub-Menu ---------------------------------->
@@ -22,8 +22,9 @@
                             <a class="has-arrow" href="#" aria-expanded="false"><span class="fa fa-users icon-wrap"></span> <span class="mini-click-non">UPLOADING</a>
                             <ul class="submenu-angle text-uppercase" aria-expanded="false">
             
-                                <li><a title="All Unpaid" href="uploading_csv_file.php"><i class="fa fa-home"></i>&nbsp;<span class="mini-sub-pro"> Association</span></a></li>
-                                <li><a title="All Pre-Paid" href="uploading_csv_directory.php"><i class="fa fa-th-list"></i>&nbsp;<span class="mini-sub-pro">Directory</span></a></li>
+                                <li><a title="Upload Association Data" href="uploading_csv_file.php"><i class="fa fa-home"></i>&nbsp;<span class="mini-sub-pro"> Association</span></a></li>
+                                <li><a title="Upload Directory Data" href="uploading_csv_directory.php"><i class="fa fa-th-list"></i>&nbsp;<span class="mini-sub-pro">Directory</span></a></li>
+                                <li><a title="Upload Event Data" href="uploading_csv_event.php"><i class="fa fa-th-list"></i>&nbsp;<span class="mini-sub-pro">Show / Events</span></a></li>
                                  <!-- <li><a title="All Pre-Paid" href="#"><i class="fa fa-users"></i>&nbsp;<span class="mini-sub-pro">Group Package</span></a></li> -->
                             </ul>
                         </li>

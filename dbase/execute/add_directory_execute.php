@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
 
 
  
-    $add_directory ="INSERT INTO tbl_directory (directory,category,date_created) VALUE('$directory_name','$category_name',NOW())";
+    $add_directory ="INSERT INTO tbl_directory (directory, cat_id ,date_created) VALUE('$directory_name','$category_name',NOW())";
 
     $add_result = $con->query($add_directory);
 

@@ -138,7 +138,7 @@ if(!empty($_GET['status'])){
                                             </select>
                                         </div> 
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                              <br>
                                             <label for="industry" class="text-primary">INDUSTRIES:</label>
                                             <select name="industry" class="form-control" id="exhibitor">
@@ -152,7 +152,22 @@ if(!empty($_GET['status'])){
                                                 }
                                                 ?>
                                             </select>
-                                        </div>                                        
+                                        </div>
+                                        <div class="col-md-3">
+                                             <br>
+                                            <label for="encoder" class="text-primary">ENCODER:</label>
+                                            <select name="encoder" class="form-control" id="exhibitor">
+                                                <option selected>Choose...</option>
+                                                <?php 
+                                                $sql_end = "SELECT encoder_id, encoder_name FROM tbl_encoder"; 
+                                                $result_end = mysqli_query($con, $sql_end);
+                                                while ($row_end = mysqli_fetch_array($result_end)){
+                                                #echo ...                                       
+                                                    echo '<option value="'. $row_end['encoder_id'].'">'. $row_end['encoder_name'].'</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>                                         
                                     </div>
                                     <input type="file"  class="btn btn-primary btn-lg btn-block" name="file" />
                                     <br>

@@ -74,7 +74,7 @@
 						<div class="form-group">
 							<label for="userType">I'm a :</label>
 							<input type="radio" name="userType" value="database" class="custom-radio" required="">&nbsp; Database |
-							<input type="radio" name="userType" value="teacher" class="custom-radio" required="">&nbsp; Teacher |
+							<input type="radio" name="userType" value="teacher" class="custom-radio" required="">&nbsp; Marcomm |
 							<input type="radio" name="userType" value="admin" class="custom-radio" required="">&nbsp; Admin 
 						</div>
 						<div class="form-group">

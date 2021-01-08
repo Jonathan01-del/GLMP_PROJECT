@@ -93,14 +93,20 @@ if (!isset($_SESSION['username']) || $_SESSION['role']!="database") {
                                             <label for="category" class="text-primary">DIRECTORY NAME:</label>
                                             <input type="text" id="directory_name" style="text-transform: uppercase" class="form-control" name="directory_name" placeholder="Add directory name here! ">
                                         </div>  
-                                        <div class="col-md-6">                                            
+                                        <div class="col-md-6">                                             
                                             <label for="category" class="text-primary">CATEGORY:</label>
-                                            <select name="category" class="form-control" id="category">
+                                            <select name="category" class="form-control" id="exhibitor">
                                                 <option selected>Choose...</option>
-                                                <option value="International Directory">International Directory</option>
-                                                <option value="Local Directory">Local Directory</option>
+                                                <?php 
+                                                $sql_cat = "SELECT cat_id, category_name FROM tbl_category"; 
+                                                $result_cat = mysqli_query($con, $sql_cat);
+                                                while ($row_cat = mysqli_fetch_array($result_cat)){
+                                                #echo ...                                       
+                                                    echo '<option value="'. $row_cat['cat_id'].'">'. $row_cat['category_name'].'</option>';
+                                                }
+                                                ?>
                                             </select>
-                                        </div>                                        
+                                        </div>                                       
                                     </div>
 
 <!--                                     <div class="form-group row">                                        

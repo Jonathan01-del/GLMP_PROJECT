@@ -110,7 +110,7 @@ if(!empty($_GET['status'])){
                 <div class="col-md-12">
                     <div class="panel panel-danger">
                         <div class="panel-heading">
-                            <h3 class="panel-title">IMPORT DIRECTORY</h3>
+                            <h3 class="panel-title">IMPORT EVENT/SHOW DATA</h3>
                         </div>
                         <div class="panel-body">
                                 <div class="col-md-12 head">
@@ -119,25 +119,41 @@ if(!empty($_GET['status'])){
                                     </div>
                                 </div>                               
                                 <div class="col-md-12" id="importFrm" style="display: none;">
-                                    <form action="import_directory.php" method="post" enctype="multipart/form-data">
+                                    <form action="importDays_data.php" method="post" enctype="multipart/form-data">
                                         <div class="form-group row"> 
 
                                         <div class="col-md-6">
                                              <br>
-                                            <label for="directory" class="text-primary">DIRECTORY NAME :</label>
-                                            <select name="directory" class="form-control" id="exhibitor">
+                                            <label for="event" class="text-primary">SHOW / EVENT:</label>
+                                            <select name="event" class="form-control" id="exhibitor">
                                                 <option selected>Choose...</option>
                                                 <?php 
-                                                $sql_assoc = "SELECT directory_id, directory FROM tbl_directory"; 
-                                                $result_assoc = mysqli_query($con, $sql_assoc);
-                                                while ($row_assoc = mysqli_fetch_array($result_assoc)){
+                                                $sql_event = "SELECT event_key, event_name FROM tbl_event"; 
+                                                $result_event = mysqli_query($con, $sql_event);
+                                                while ($row_event = mysqli_fetch_array($result_event)){
                                                 #echo ...                                       
-                                                    echo '<option value="'. $row_assoc['directory_id'].'">'. $row_assoc['directory'].'</option>';
+                                                    echo '<option value="'. $row_event['event_key'].'">'. $row_event['event_name'].'</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </div> 
+
+                                        <div class="col-md-3">
+                                             <br>
+                                            <label for="category" class="text-primary">CATEGORY:</label>
+                                            <select name="category" class="form-control" id="exhibitor">
+                                                <option selected>Choose...</option>
+                                                <?php 
+                                                $sql_cat = "SELECT cat_id, category_name FROM tbl_category"; 
+                                                $result_cat = mysqli_query($con, $sql_cat);
+                                                while ($row_cat = mysqli_fetch_array($result_cat)){
+                                                #echo ...                                       
+                                                    echo '<option value="'. $row_cat['cat_id'].'">'. $row_cat['category_name'].'</option>';
                                                 }
                                                 ?>
                                             </select>
                                         </div>
-                                        <div class="col-md-6">
+<!--                                         <div class="col-md-3">
                                              <br>
                                             <label for="encoder" class="text-primary">ENCODER:</label>
                                             <select name="encoder" class="form-control" id="exhibitor">
@@ -151,7 +167,7 @@ if(!empty($_GET['status'])){
                                                 }
                                                 ?>
                                             </select>
-                                        </div>                                         
+                                        </div>  -->                                        
                                     </div>
                                     <input type="file"  class="btn btn-primary btn-lg btn-block" name="file" />
                                     <br>
